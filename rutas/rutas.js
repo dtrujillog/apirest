@@ -56,12 +56,12 @@ exports.agregar = function (req, res) {
 exports.editar = function (req, res) {
     var data = {
         nombre: req.body.nombre,
-        apellido: req.body.anio,
-        correo: req.body.uva,
-        fecha_nac: req.body.region,
-        codigo: req.body.pais,
-        direccion: req.body.descripcion,
-        estado: req.body.foto
+        apellido: req.body.apellido,
+        correo: req.body.correo,
+        fecha_nac: req.body.fecha_nac,
+        codigo: req.body.codigo,
+        direccion: req.body.direccion,
+        estado: req.body.estado
     }
     Alumnos.update({
         "_id": req.params.id
@@ -170,6 +170,7 @@ exports.obtenernota = function (req, res) {
     // Notas.find(function (error, notas) {
         res.status(200).send(notas);
         // res.send(notas);
+       
     });
 }
 

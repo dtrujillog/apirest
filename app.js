@@ -1,8 +1,7 @@
 var express = require('express'),
-    rutas = require("./rutas/rutas.js"),
+    rutas = require("./rutas/rutas.js");
     bodyParser = require('body-parser');
-
-    
+ 
 var app = express();
 
 app.use(bodyParser.json());
@@ -17,6 +16,7 @@ app.get('/alumnos/:id', rutas.obtenerPorId);
 app.post('/alumnos', rutas.agregar);
 app.put('/alumnos/:id', rutas.editar);
 app.delete('/alumnos/:id', rutas.eliminar);
+
 
 // Rutas de los cursos
 app.get('/cursos', rutas.obtenercursos);

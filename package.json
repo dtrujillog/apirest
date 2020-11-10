@@ -9,7 +9,7 @@
     "mongoose": "^5.10.13",
     "mongoskin": "~1.4.12"
   },
-  "author": "",
+  "author": "Diego Javier Trujillo Garcia: Carnet: 1690106032",
   "license": "ISC",
   "devDependencies": {
     "@types/mongoose": "^5.7.37"
