@@ -19,18 +19,29 @@ app.delete('/alumnos/:id', rutas.eliminar);
 
 
 // Rutas de los cursos
-app.get('/cursos', rutas.obtenercursos);
-app.get('/cursos/:id', rutas.obtenerPorIdcurso);
-app.post('/cursos', rutas.agregarcurso);
-app.put('/cursos/:id', rutas.editarcurso);
-app.delete('/cursos/:id', rutas.eliminarcurso);
+var express = require('express'),
+    ruta2 = require("./rutas/ruta2.js");
+   
+
+
+app.get('/cursos', ruta2.obtenercursos);
+app.get('/cursos/:id', ruta2.obtenerPorIdcurso);
+app.post('/cursos', ruta2.agregarcurso);
+app.put('/cursos/:id', ruta2.editarcurso);
+app.delete('/cursos/:id', ruta2.eliminarcurso);
 
 // Rutas de notas
-app.get('/notas', rutas.obtenernota);
-app.get('/notas/:id', rutas.obtenerPorIdnota);
-app.post('/notas', rutas.agregarnota);
-app.put('/notas/:id', rutas.editarnota);
-app.delete('/notas/:id', rutas.eliminarnota);
+
+
+// Rutas de los cursos
+var express = require('express'),
+    ruta3 = require("./rutas/ruta3.js");
+   
+app.get('/notas', ruta3.obtenernota);
+app.get('/notas/:id', ruta3.obtenerPorIdnota);
+app.post('/notas', ruta3.agregarnota);
+app.put('/notas/:id', ruta3.editarnota);
+app.delete('/notas/:id', ruta3.eliminarnota);
 
 // Rutas de notas con alumnos
 // app.get('/notas', rutas.obtenernotas);

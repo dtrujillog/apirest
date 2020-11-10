@@ -84,144 +84,144 @@ exports.eliminar = function (req, res) {
 }
 
 
-/** Esquema para cursos */
-var Schema = mongoose.Schema;
-var Alumnos = mongoose.model("alumnos");
-var CursosSchema = {
-    curso: String,
-    Semestre: String,
-    Prerequisito: String,
-    alumno:{ type: Schema.ObjectId, ref: "alumnos" }
-}
-var Cursos = mongoose.model('cursos', CursosSchema);
+// /** Esquema para cursos */
+// var Schema = mongoose.Schema;
+// var Alumnos = mongoose.model("alumnos");
+// var CursosSchema = {
+//     curso: String,
+//     Semestre: String,
+//     Prerequisito: String,
+//     alumno:{ type: Schema.ObjectId, ref: "alumnos" }
+// }
+// var Cursos = mongoose.model('cursos', CursosSchema);
 
-// obtener todos los curos
-exports.obtenercursos = function (req, res) {
+// // obtener todos los curos
+// exports.obtenercursos = function (req, res) {
  
-    Cursos.find(function (error, cursos) {
-        res.send(cursos);
-    });
-}
-//obtener por curso id
-exports.obtenerPorIdcurso = function (req, res) {
-    Cursos.findOne({
-        "_id": req.params.id
-    }, function (error, cursos) {
-        res.send(cursos);
-    });
-}
-//para agregar cursos
-exports.agregarcurso = function (req, res) {
-    var data = {
-        curso: req.body.curso,
-        Semestre: req.body.Semestre,
-        Prerequisito: req.body.Prerequisito
-    }
-    var curso = new Cursos(data);
-    curso.save(function (error, resultado) {
-        if (error) {
-            res.send("Hubo un error.");
-        } else {
-            res.send(resultado[0]);
-        }
-    });
-}
+//     Cursos.find(function (error, cursos) {
+//         res.send(cursos);
+//     });
+// }
+// //obtener por curso id
+// exports.obtenerPorIdcurso = function (req, res) {
+//     Cursos.findOne({
+//         "_id": req.params.id
+//     }, function (error, cursos) {
+//         res.send(cursos);
+//     });
+// }
+// //para agregar cursos
+// exports.agregarcurso = function (req, res) {
+//     var data = {
+//         curso: req.body.curso,
+//         Semestre: req.body.Semestre,
+//         Prerequisito: req.body.Prerequisito
+//     }
+//     var curso = new Cursos(data);
+//     curso.save(function (error, resultado) {
+//         if (error) {
+//             res.send("Hubo un error.");
+//         } else {
+//             res.send(resultado[0]);
+//         }
+//     });
+// }
 
-// para editar cursos
-exports.editarcurso = function (req, res) {
-    var data = {
-        curso: req.body.curso,
-        Semestre: req.body.Semestre,
-        Prerequisito: req.body.Prerequisito
-    }
-    Cursos.update({
-        "_id": req.params.id
-    }, data, function () {
-        res.send(data);
-    });
-}
+// // para editar cursos
+// exports.editarcurso = function (req, res) {
+//     var data = {
+//         curso: req.body.curso,
+//         Semestre: req.body.Semestre,
+//         Prerequisito: req.body.Prerequisito
+//     }
+//     Cursos.update({
+//         "_id": req.params.id
+//     }, data, function () {
+//         res.send(data);
+//     });
+// }
 
-// //para eliminar cursos
-exports.eliminarcurso = function (req, res) {
-    Cursos.remove({
-        "_id": req.params.id
-    }, function (error) {
-        if (error) {
-            console.log(error);
-        } else {
-            res.send("true");
-        }
-    });
-}
-
-
-/** Esque para calificaciones */
+// // //para eliminar cursos
+// exports.eliminarcurso = function (req, res) {
+//     Cursos.remove({
+//         "_id": req.params.id
+//     }, function (error) {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.send("true");
+//         }
+//     });
+// }
 
 
-var NotasSchema = new Schema({
-    alumno: { type: Schema.ObjectId, ref: "alumnos" } ,
-    curso: { type: Schema.ObjectId, ref: "cursos" } ,
-    nota: Number
-});
-var Notas = mongoose.model('notas', NotasSchema);
-//obtener todos los notas
-exports.obtenernota = function (req, res) {
-    Notas.find({}, function(err, notas) {
-    // Notas.find(function (error, notas) {
-        res.status(200).send(notas);
-        // res.send(notas);
+// /** Esque para calificaciones */
+
+
+// var NotasSchema = new Schema({
+//     alumno: { type: Schema.ObjectId, ref: "alumnos" } ,
+//     curso: { type: Schema.ObjectId, ref: "cursos" } ,
+//     nota: Number
+// });
+// var Notas = mongoose.model('notas', NotasSchema);
+// //obtener todos los notas
+// exports.obtenernota = function (req, res) {
+//     Notas.find({}, function(err, notas) {
+//     // Notas.find(function (error, notas) {
+//         res.status(200).send(notas);
+//         // res.send(notas);
        
-    });
-}
+//     });
+// }
 
-//obtener por notas id
-exports.obtenerPorIdnota = function (req, res) {
-    Notas.findOne({
-        "_id": req.params.id
-    }, function (error, notas) {
-        res.send(notas);
-    });
-}
-//para agregar notas
-exports.agregarnota = function (req, res) {
-    var data = {
-        alumno: req.body.alumno,
-        curso: req.body.curso,
-        nota: req.body.nota
-    }
-    var nota = new Notas(data);
-    nota.save(function (error, resultado) {
-        if (error) {
-            res.send("Hubo un error.");
-        } else {
-            res.send(resultado[0]);
-        }
-    });
-}
+// //obtener por notas id
+// exports.obtenerPorIdnota = function (req, res) {
+//     Notas.findOne({
+//         "_id": req.params.id
+//     }, function (error, notas) {
+//         res.send(notas);
+//     });
+// }
+// //para agregar notas
+// exports.agregarnota = function (req, res) {
+//     var data = {
+//         alumno: req.body.alumno,
+//         curso: req.body.curso,
+//         nota: req.body.nota
+//     }
+//     var nota = new Notas(data);
+//     nota.save(function (error, resultado) {
+//         if (error) {
+//             res.send("Hubo un error.");
+//         } else {
+//             res.send(resultado[0]);
+//         }
+//     });
+// }
 
-// para editar notas
-exports.editarnota = function (req, res) {
-    var data = {
-        alumno: req.body.alumno,
-        curso: req.body.curso,
-        nota: req.body.nota
-    }
-    Notas.update({
-        "_id": req.params.id
-    }, data, function () {
-        res.send(data);
-    });
-}
+// // para editar notas
+// exports.editarnota = function (req, res) {
+//     var data = {
+//         alumno: req.body.alumno,
+//         curso: req.body.curso,
+//         nota: req.body.nota
+//     }
+//     Notas.update({
+//         "_id": req.params.id
+//     }, data, function () {
+//         res.send(data);
+//     });
+// }
 
-// //para eliminar notas
-exports.eliminarnota = function (req, res) {
-    Notas.remove({
-        "_id": req.params.id
-    }, function (error) {
-        if (error) {
-            console.log(error);
-        } else {
-            res.send("true");
-        }
-    });
-}
+// // //para eliminar notas
+// exports.eliminarnota = function (req, res) {
+//     Notas.remove({
+//         "_id": req.params.id
+//     }, function (error) {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.send("true");
+//         }
+//     });
+// }
